@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.3]
+
+- fixed Android's openAppSetting() to open my app's setting details instead of all installed apps
+
 ## [1.0.2]
 
 - fixed openURL API deprecation on iOS
