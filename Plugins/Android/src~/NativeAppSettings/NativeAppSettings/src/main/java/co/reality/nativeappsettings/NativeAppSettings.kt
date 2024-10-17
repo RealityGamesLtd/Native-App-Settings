@@ -3,6 +3,7 @@ package co.reality.nativeappsettings
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.provider.Settings.*
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
@@ -23,7 +24,9 @@ class NativeAppSettings {
         @JvmStatic
         fun openAppSettings(context: Context) {
             try {
-                startActivity(context, Intent(ACTION_APPLICATION_DETAILS_SETTINGS), null)
+                val packageName = context.packageName;
+                val uri = Uri.parse("package:$packageName")
+                startActivity(context, Intent(ACTION_APPLICATION_DETAILS_SETTINGS, uri), null)
             } catch (e: ActivityNotFoundException) {
                 Log.e(TAG, "Open settings exception", e)
             }
