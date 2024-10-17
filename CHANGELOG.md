@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [1.0.3]
+## [1.0.4]
 
 - fixed Android's openAppSetting() to open my app's setting details instead of all installed apps
 
