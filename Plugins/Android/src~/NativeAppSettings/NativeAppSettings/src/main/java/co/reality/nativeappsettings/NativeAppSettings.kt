@@ -23,7 +23,7 @@ class NativeAppSettings {
         @JvmStatic
         fun openAppSettings(context: Context) {
             try {
-                startActivity(context, Intent(ACTION_APPLICATION_SETTINGS), null)
+                startActivity(context, Intent(ACTION_APPLICATION_DETAILS_SETTINGS), null)
             } catch (e: ActivityNotFoundException) {
                 Log.e(TAG, "Open settings exception", e)
             }
