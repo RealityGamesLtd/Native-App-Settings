@@ -203,7 +203,7 @@ namespace NativeAppSettingsPlugin
                     OpenNotificationSettingsMenu();
                     break;
                 case SettingsDirectory.LOCATION_PERMISSIONS:
-                    OpenNotificationSettingsMenu();
+                    OpenSettingsMenu();
                     break;
                 case SettingsDirectory.LOCATION_SERVICES:
                     OpenAppLocationServicesSettings();
