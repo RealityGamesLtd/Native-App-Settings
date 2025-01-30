@@ -35,58 +35,44 @@
  App-Prefs:root=GameCenter    Open Game Center settings.
  */
 
-    char* cStringCopyA(const char* string)
-    {
-        if (string == NULL)
-            return NULL;
-        char* res = (char*)malloc(strlen(string) + 1);
-        strcpy(res, string);
-        return res;
-    }
+void OpenAppLocationServicesSettings() {
+    NSLog(@"Settings: OpenAppLocationServicesSettings");
+    NSURL *appSettings = [NSURL URLWithString:@"App-Prefs:root=Privacy&path=LOCATION"];
+    [[UIApplication sharedApplication] openURL:appSettings
+                                       options:@{}
+                             completionHandler:^(BOOL success) {}];
+}
 
-    void OpenAppLocationServicesSettings() {
-        if (&UIApplicationOpenSettingsURLString != NULL) {
-            NSURL *appSettings = [NSURL URLWithString:"App-Prefs:root=Privacy&path=LOCATION"];
-            [[UIApplication sharedApplication] openURL:appSettings];
-        }
-    }
-    
-    void OpenSettingsMenuAt(const char * value) {
-        NSString *url = [NSString stringWithUTF8String:value];
-        if (&url != NULL) {
-            NSURL *appSettings = [NSURL URLWithString:url];
-            [[UIApplication sharedApplication] openURL:appSettings
-                                               options:@{}
-                                     completionHandler:^(BOOL success) {}];
-        }
-    }
-    
-    void OpenSettingsMenu() {
-        if (&UIApplicationOpenSettingsURLString != NULL) {
-            NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            
-            [[UIApplication sharedApplication] openURL:appSettings
-                                               options:@{}
-                                     completionHandler:^(BOOL success) {}];
-        }
-    }
-    
-    void OpenNotificationSettingsMenu() {
-        if (@available(iOS 16.0, *)){
-            if (&UIApplicationOpenSettingsURLString != NULL) {
-                NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenNotificationSettingsURLString];
-                
-                [[UIApplication sharedApplication] openURL:appSettings
-                                                   options:@{}
-                                         completionHandler:^(BOOL success) {}];
-            }
-        } else {
-            NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
-            
-            [[UIApplication sharedApplication] openURL:appSettings
-                                               options:@{}
-                                     completionHandler:^(BOOL success) {}];
-            
-        }
-    }
+void OpenSettingsMenuAt(const char * value) {
+    NSString *url = [NSString stringWithUTF8String:value];
+    NSLog(@"Settings: OpenSettingsMenuAt");
+    NSURL *appSettings = [NSURL URLWithString:url];
+    [[UIApplication sharedApplication] openURL:appSettings
+                                       options:@{}
+                             completionHandler:^(BOOL success) {}];
+}
 
+void OpenSettingsMenu() {
+    NSLog(@"Settings: OpenSettingsMenu");
+    NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+    
+    [[UIApplication sharedApplication] openURL:appSettings
+                                       options:@{}
+                             completionHandler:^(BOOL success) {}];
+}
+
+void OpenNotificationSettingsMenu() {
+    if (@available(iOS 16.0, *)){
+        NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenNotificationSettingsURLString];
+        
+        [[UIApplication sharedApplication] openURL:appSettings
+                                           options:@{}
+                                 completionHandler:^(BOOL success) {}];
+    } else {
+        NSURL *appSettings = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+        
+        [[UIApplication sharedApplication] openURL:appSettings
+                                           options:@{}
+                                 completionHandler:^(BOOL success) {}];
+    }
+}

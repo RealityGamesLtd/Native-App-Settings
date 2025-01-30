@@ -2,7 +2,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 
 /*
-Available paths for iOS (keep in mind that some of them)
+Available paths for iOS (keep in mind that some of them might not work)
  App-Prefs:root=WIFI    Open Wi-Fi settings.
  App-Prefs:root=Bluetooth    Open Bluetooth settings.
  App-Prefs:root=General    Open General settings.
@@ -38,7 +38,7 @@ Available paths for iOS (keep in mind that some of them)
  */
 
 /*
-Available strings for Android (keep in mind that some of them)
+Available strings for Android (keep in mind that some of them might not work)
 ACTION_ACCESSIBILITY_SETTINGS = "android.settings.ACCESSIBILITY_SETTINGS";
 ACTION_ADD_ACCOUNT = "android.settings.ADD_ACCOUNT_SETTINGS";
 ACTION_AIRPLANE_MODE_SETTINGS = "android.settings.AIRPLANE_MODE_SETTINGS";
@@ -144,7 +144,7 @@ namespace NativeAppSettingsPlugin
 #if UNITY_IOS
         [DllImport("__Internal")]
         private static extern void OpenSettingsMenu();
-        
+
         [DllImport("__Internal")]
         private static extern void OpenSettingsMenuAt(string value);
 
