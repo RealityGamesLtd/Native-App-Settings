@@ -8,12 +8,31 @@ import android.provider.Settings.*
 import android.util.Log
 import androidx.core.content.ContextCompat.startActivity
 
+
 class NativeAppSettings {
     companion object {
         private const val TAG = "native_app_settings"
 
         @JvmStatic
+        fun openAppLocationSettings(context: Context, value: String) {
+            try {
+                startActivity(context, Intent(value), null)
+            } catch (e: ActivityNotFoundException) {
+                Log.e(TAG, "Open settings exception", e)
+            }
+        }
+
+        @JvmStatic
         fun openAppLocationSettings(context: Context) {
+            try {
+                startActivity(context, Intent(ACTION_APPLICATION_DETAILS_SETTINGS), null)
+            } catch (e: ActivityNotFoundException) {
+                Log.e(TAG, "Open settings exception", e)
+            }
+        }
+
+        @JvmStatic
+        fun openAppLocationServicesSettings(context: Context) {
             try {
                 startActivity(context, Intent(ACTION_LOCATION_SOURCE_SETTINGS), null)
             } catch (e: ActivityNotFoundException) {
